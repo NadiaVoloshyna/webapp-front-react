@@ -3,6 +3,7 @@ import './App.css';
 import User from './User/User';
 import UserSearch from '../components/User/UserSearch';
 import RegisterForm from '../components/SignUp/RegisterForm';
+import LoginForm from '../components/LogIn/LoginForm';
 class App extends Component {
   state = {
     users: [
@@ -27,6 +28,7 @@ class App extends Component {
     <div className="App">
       <h1>This is my webapp</h1>
       <RegisterForm />
+      <LoginForm />
       <p>It's awesome!</p>
       <UserSearch />
       <button onClick={this.switchNameHandler}>Switch Name</button>
