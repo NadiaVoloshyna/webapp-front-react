@@ -35,7 +35,8 @@ class UserSearch extends Component {
         { this.state.users.map(user => <li>{user.name}</li>)}
          </ul>
         </div>
-        )
+        );
     }
 }
+
 export default UserSearch;

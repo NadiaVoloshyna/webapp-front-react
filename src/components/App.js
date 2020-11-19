@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import User from './User/User';
 import UserSearch from '../components/User/UserSearch';
+import RegisterForm from '../components/SignUp/RegisterForm';
 class App extends Component {
   state = {
     users: [
@@ -25,8 +26,9 @@ class App extends Component {
     return (
     <div className="App">
       <h1>This is my webapp</h1>
-       <UserSearch />
+      <RegisterForm />
       <p>It's awesome!</p>
+      <UserSearch />
       <button onClick={this.switchNameHandler}>Switch Name</button>
       <User 
       name={this.state.users[0].name} 
