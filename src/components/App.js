@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import User from './User/User';
-
+import UserSearch from '../components/User/UserSearch';
 class App extends Component {
   state = {
     users: [
@@ -25,6 +25,7 @@ class App extends Component {
     return (
     <div className="App">
       <h1>This is my webapp</h1>
+       <UserSearch />
       <p>It's awesome!</p>
       <button onClick={this.switchNameHandler}>Switch Name</button>
       <User 

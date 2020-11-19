@@ -10,6 +10,7 @@
     "history": "^5.0.0",
     "isomorphic-cookie": "^1.2.4",
     "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.20",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-axios": "^2.0.3",

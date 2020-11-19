@@ -1,0 +1,14 @@
+.SearchInput {
+    width: 200px;
+	height: 23px;
+	outline: none;
+	background-color: white;
+	font-style: inherit;
+	padding: 6px 7px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+.SearchInput:focus {
+	background-color: #ccc;
+	outline: none;
+}
