@@ -28,4 +28,18 @@
 //     return response;
 //   },
 
+//   setHeader() {
+//     if (!authHeader.Authorization) {
+//       authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
+//     }
+//   },
+
+//   userId() {
+//     const token = isomorphicCookie.load('token');
+//     if (token) {
+//       return JWT(token).user.id;
+//     }
+//     return null;
+//   },
 // };
+

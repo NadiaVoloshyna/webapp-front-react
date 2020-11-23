@@ -29,12 +29,12 @@ class LoginForm extends Component {
           email: this.state.email,
           password: this.state.password,
         };
-        console.log(user);
     
         axios.post(`${apiURL}/api/v1/auth/login`, user )
           .then(res => {
+            const authToken = res.data.token;
+            localStorage.setItem('token', authToken);
             console.log(res);
-            console.log(res.data);
           })
       }
 
