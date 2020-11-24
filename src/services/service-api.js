@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { apiURL } from '../constants/index';
+import { apiURL } from '../constants';
 
-const instance = (token) => axios.create({
+const instance = axios.create({
   baseURL: `${apiURL}/api/v1/`,
   headers: {
     'content-type': 'application/json',
@@ -17,5 +17,6 @@ export const confirmUser = (id, userKey) => {
     }),
   );
 };
+
 
 

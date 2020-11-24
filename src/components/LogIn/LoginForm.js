@@ -29,7 +29,6 @@ class LoginForm extends Component {
           email: this.state.email,
           password: this.state.password,
         };
-    
         axios.post(`${apiURL}/api/v1/auth/login`, user )
           .then(res => {
             const authToken = res.data.token;

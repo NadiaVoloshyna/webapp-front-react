@@ -1,10 +1,15 @@
 import React from 'react';
+import './User.css';
 
 const user = (props) => {
     return (
-        <div>
-            <p>I'm {props.name} and my email is {props.email}</p>
-            <p>{props.children}</p>
+        <div className="User">
+            <p>
+            {props.name} <br />
+            {props.email} <br />
+            {props.phone}
+            </p>
+            <button onClick={props.delete}>Delete User</button>
         </div>
     )
 };

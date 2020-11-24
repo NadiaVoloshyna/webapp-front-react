@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import isomorphicCookie from 'isomorphic-cookie';
 import { apiURL } from '../../constants/index';
 import _ from 'lodash';
 import './UserSearch.css';
+import User from '../User/User';
 
 class UserSearch extends Component {
     state = {
@@ -13,10 +13,7 @@ class UserSearch extends Component {
     };
 
     inputChangeHandler = _.debounce((search) => {
-        console.log(search);
         const token = localStorage.getItem('token');
-        //const token = isomorphicCookie.load('token');
-        console.log(token);
         axios.get(`${apiURL}/api/v1/users/search?search=${search}`, {
             headers: {
             "Authorization" : `Bearer ${token}`,
@@ -24,14 +21,13 @@ class UserSearch extends Component {
         },
         })
         .then(result => {
-            console.log(result)
             this.setState({
                 users: result.data,
                 isLoaded: true,
             });
         }).catch(error => {
             this.setState({
-             isLoaded: true,
+             isLoaded: false,
              error,
            }); 
         });
@@ -44,12 +40,18 @@ class UserSearch extends Component {
           <input
             className="SearchInput"
             type="text"
-            //value={this.state.search}
+            value={this.state.search}
             placeholder="Search..."
             onChange={(e) => this.inputChangeHandler(e.target.value)}
           />
           <ul>
-        { this.state.users.map(user => <li key={user.id}>{user.name}</li>)}
+        { this.state.users.map(user => {
+            return <User 
+            key={user.id}
+            name={user.name} 
+            email={user.email} 
+            phone={user.phone} />
+          })}
          </ul>
         </div>
         );
