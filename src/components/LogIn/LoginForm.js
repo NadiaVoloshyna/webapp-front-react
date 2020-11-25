@@ -32,10 +32,27 @@ class LoginForm extends Component {
         axios.post(`${apiURL}/api/v1/auth/login`, user )
           .then(res => {
             const authToken = res.data.token;
+            const user = res.config.data;
             localStorage.setItem('token', authToken);
+            localStorage.setItem('user', user);
+        //     setTimeout(()=>{
+        //         localStorage.clear();
+        //   },3000)
             console.log(res);
+            console.log(res.config.data);
           })
       }
+
+// // Store the data with time
+// const EXPIRE_TIME = 1000*60*60;
+// localStorage.setItem('storedData', JSON.stringify({
+//   time: new Date(),
+//   data: "your some data"
+// }));
+// // start the time out
+// setTimeout(function() {
+//     localStorage.removeItem('storedData');
+// }, EXPIRE_TIME); // after an hour it will delete the data
 
     render() {
         return(

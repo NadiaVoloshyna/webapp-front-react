@@ -40,6 +40,29 @@ class UserUpdateForm extends Component {
         });
     }
 
+    getCurrentUser = () => {
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        //localStorage.clear();
+        console.log(user);
+        console.log(token);
+        axios.get(`${apiURL}/api/v1/users/me`, {
+            user,
+            headers: {
+            "Authorization" : `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        }).then(res => {
+            this.setState({
+                name: res.data.name,
+                email: res.data.email,
+                phone: res.data.phone,
+                current_password: '',
+          });
+          console.log(res);
+        })
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         this.setState({loading: true});
@@ -51,9 +74,13 @@ class UserUpdateForm extends Component {
           phone: this.state.phone,
         };
         console.log(user);
-    
-        axios.put(`${apiURL}/api/v1/users/me/${user.id}`, user )
-          .then(res => {
+        const token = localStorage.getItem('token');
+        axios.put(`${apiURL}/api/v1/users/me`, user, {
+            headers: {
+            "Authorization" : `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        }).then(res => {
             console.log(res);
             console.log(res.data);
           })
@@ -61,7 +88,7 @@ class UserUpdateForm extends Component {
 
     render() {
         return(
-        <div className="RegisterForm">
+        <div className="UserUpdateForm">
             <h4>Update Your Data</h4>
             <form onSubmit={this.handleSubmit}>
                     <input 
@@ -94,7 +121,7 @@ class UserUpdateForm extends Component {
                     <input 
                     name="new_password"
                     type="password"
-                    value={this.state.current_password}
+                    value={this.state.new_password}
                     placeholder="Enter your new password"
                     description="password"
                     validate={VALIDATION_RULES.PASSWORD}
@@ -109,8 +136,9 @@ class UserUpdateForm extends Component {
                     validate={VALIDATION_RULES.PHONE} 
                     onChange={(e) => this.handleChangePhone(e.target.value)}
                     />
-                <button type="submit">Submit</button>
+                <button type="submit">Submit Changes</button>
             </form>
+            <button onClick={this.getCurrentUser}>See Current Data</button>
         </div>
         );
     }

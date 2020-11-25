@@ -1,7 +1,7 @@
 import React from 'react';
 import './User.css';
 
-const user = (props) => {
+const User = (props) => {
     return (
         <div className="User">
             <p>
@@ -14,4 +14,4 @@ const user = (props) => {
     )
 };
 
-export default user;
+export default User;

@@ -12,6 +12,21 @@ class UserSearch extends Component {
         isLoaded: false,
     };
 
+    deleteUserHandler = (userId) => {
+        const token = localStorage.getItem('token');
+        axios.delete(`${apiURL}/api/v1/users/${userId}`, {
+            headers: {
+            "Authorization" : `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+      }).then(result => {
+        const deleted = result;
+        if(deleted) {
+          console.log('Successfully deleted');
+      }
+      })
+      }
+
     inputChangeHandler = _.debounce((search) => {
         const token = localStorage.getItem('token');
         axios.get(`${apiURL}/api/v1/users/search?search=${search}`, {
@@ -50,7 +65,8 @@ class UserSearch extends Component {
             key={user.id}
             name={user.name} 
             email={user.email} 
-            phone={user.phone} />
+            phone={user.phone}
+            delete={() => this.deleteUserHandler(user.id)} />
           })}
          </ul>
         </div>
