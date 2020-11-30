@@ -12,6 +12,7 @@ class UserUpdateForm extends Component {
         new_password: '',
         phone: '',
         loading: false,
+        responseMessage: '',
       }
 
     handleChangeName = (data) => {
@@ -58,9 +59,13 @@ class UserUpdateForm extends Component {
                 email: res.data.email,
                 phone: res.data.phone,
                 current_password: '',
-          });
-          console.log(res);
-        })
+          })
+        }).catch(error => {
+            const { response } = error;
+            if (response) {
+              this.setState({responseMessage: 'Please log in'});
+            }
+          });         
     }
 
     handleSubmit = event => {
@@ -80,10 +85,18 @@ class UserUpdateForm extends Component {
             "Authorization" : `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
-        }).then(res => {
+        })
+        .then(res => {
+            this.setState({responseMessage: 'Your data was updated'});
             console.log(res);
             console.log(res.data);
-          })
+        })
+        .catch(error => {
+            const { response } = error;
+            if (response) {
+              this.setState({responseMessage: response.data.message});
+            }
+          });
       }
 
     render() {
@@ -139,6 +152,7 @@ class UserUpdateForm extends Component {
                 <button type="submit">Submit Changes</button>
             </form>
             <button onClick={this.getCurrentUser}>See Current Data</button>
+            <p>{this.state.responseMessage}</p>
         </div>
         );
     }

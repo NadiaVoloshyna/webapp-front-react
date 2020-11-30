@@ -9,6 +9,7 @@ class LoginForm extends Component {
         email: '',
         password: '',
         loading: false,
+        responseMessage: '',
       }
 
     handleChangeEmail = (data) => {
@@ -35,12 +36,19 @@ class LoginForm extends Component {
             const user = res.config.data;
             localStorage.setItem('token', authToken);
             localStorage.setItem('user', user);
+            this.setState({responseMessage: 'You are logged in'});
         //     setTimeout(()=>{
         //         localStorage.clear();
         //   },3000)
             console.log(res);
             console.log(res.config.data);
           })
+          .catch(error => {
+            const { response } = error;
+            if (response) {
+              this.setState({responseMessage: response.data.message});
+            }
+          });
       }
 
 // // Store the data with time
@@ -79,6 +87,7 @@ class LoginForm extends Component {
                     />
                 <button type="submit">Submit</button>
             </form>
+        <p>{this.state.responseMessage}</p>
         </div>
         );
     }

@@ -11,6 +11,7 @@ class RegisterForm extends Component {
         password: '',
         phone: '',
         loading: false,
+        responseMessage: '',
       }
 
     handleChangeName = (data) => {
@@ -47,9 +48,16 @@ class RegisterForm extends Component {
     
         axios.post(`${apiURL}/api/v1/auth/signup`, user )
           .then(res => {
+            this.setState({responseMessage: 'You are registered'});
             console.log(res);
             console.log(res.data);
           })
+          .catch(error => {
+            const { response } = error;
+            if (response) {
+              this.setState({responseMessage: response.data.message});
+            }
+          });
       }
 
     render() {
@@ -95,6 +103,7 @@ class RegisterForm extends Component {
                     />
                 <button type="submit">Submit</button>
             </form>
+            <p>{this.state.responseMessage}</p>
         </div>
         );
     }

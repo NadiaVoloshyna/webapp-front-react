@@ -10,6 +10,7 @@ class UserSearch extends Component {
         users: [],
         error: null,
         isLoaded: false,
+        responseMessage: '',
     };
 
     deleteUserHandler = (userId) => {
@@ -41,10 +42,14 @@ class UserSearch extends Component {
                 isLoaded: true,
             });
         }).catch(error => {
-            this.setState({
-             isLoaded: false,
-             error,
-           }); 
+          const { response } = error;
+            if (response) {
+              this.setState({
+                responseMessage: response.data.message, 
+                isLoaded: false,
+                users: [],
+              });
+            }
         });
     }, 700);
 
@@ -69,6 +74,7 @@ class UserSearch extends Component {
             delete={() => this.deleteUserHandler(user.id)} />
           })}
          </ul>
+         <p>{this.state.responseMessage}</p>
         </div>
         );
     }
