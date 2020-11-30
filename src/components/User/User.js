@@ -4,9 +4,9 @@ import './User.css';
 const User = (props) => {
     return (
         <div className="User">
-            {props.name} <hr />
+            {props.name} <br />
             {props.email} <br />
-            {props.phone}<br />
+            {props.phone}<hr />
             <button onClick={props.delete}>Delete User</button>
         </div>
     )

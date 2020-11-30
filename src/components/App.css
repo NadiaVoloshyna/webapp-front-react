@@ -5,7 +5,16 @@
   background-position: bottom;
 }
 .Button {
-  background-color: white;
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+.red {
+  background-color: rgb(95, 189, 95);
+  color: white;
   font: inherit;
   border: 1px solid blue;
   padding: 8px;

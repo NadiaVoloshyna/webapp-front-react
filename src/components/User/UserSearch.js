@@ -23,7 +23,7 @@ class UserSearch extends Component {
       }).then(result => {
         const deleted = result;
         if(deleted) {
-          console.log('Successfully deleted');
+          alert ('Successfully deleted');
       }
       })
       }

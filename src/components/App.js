@@ -13,16 +13,6 @@ class App extends Component {
     showUsers: false
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      users: [
-        {name: 'Nadiia', email: 'nadiia@gmail.com'},
-        {name: event.target.value, email: 'max@gmail.com'},
-        {name: 'Taras', email: 'taras@gmail.com'}
-      ]
-    })
-  }
-
   deleteUserHandler = (userId) => {
     const token = localStorage.getItem('token');
     axios.delete(`${apiURL}/api/v1/users/${userId}`, {
@@ -33,7 +23,7 @@ class App extends Component {
   }).then(result => {
     const deleted = result;
     if(deleted) {
-      console.log('Successfully deleted');
+      alert ('Successfully deleted');
   }
   })
   }
@@ -59,8 +49,8 @@ class App extends Component {
 };
   
   render() {
-
     let users = null;
+    const classes = [];
 
     if(this.state.showUsers) {
       users = (
@@ -75,6 +65,10 @@ class App extends Component {
           })}
       </div> 
       );
+      classes.push('Button');
+    } 
+    else {
+      classes.push('red');
     }
 
     return (
@@ -83,9 +77,8 @@ class App extends Component {
       <RegisterForm />
       <LoginForm />
       <UserUpdateForm />
-      <p>It's awesome!</p>
       <UserSearch />
-      <button className="Button" onClick={this.toggleUsersHandler}>Toggle Users</button>
+      <button className={classes} onClick={this.toggleUsersHandler}>Toggle Users</button>
       {users}
     </div>
   );
