@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import apiClient from '../utils/axios-with-auth';
 import { apiURL } from '../../src/constants/index';
-import User from './User/User';
-import UserSearch from '../components/User/UserSearch';
+import User from './UserPage/User/User';
+import UserSearch from './UserPage/UserSearch/UserSearch';
 import RegisterForm from '../components/SignUp/RegisterForm';
 import LoginForm from '../components/LogIn/LoginForm';
-import UserUpdateForm from '../components/User/UserUpdateForm';
+import UserUpdateForm from './UserUpdateForm/UserUpdateForm';
 class App extends Component {
   state = {
     users: [],

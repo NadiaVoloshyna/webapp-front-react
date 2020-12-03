@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import apiClient from '../../utils/axios-with-auth';
-import { apiURL } from '../../constants/index';
+import apiClient from '../../../utils/axios-with-auth';
+import { apiURL } from '../../../constants/index';
 import _ from 'lodash';
 import './UserSearch.css';
 import User from '../User/User';
@@ -31,6 +31,7 @@ class UserSearch extends Component {
             this.setState({
                 users: result.data,
                 isLoaded: true,
+                responseMessage: ' ',
             });
         }).catch(error => {
           const { response } = error;

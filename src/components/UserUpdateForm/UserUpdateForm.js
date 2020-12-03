@@ -3,6 +3,7 @@ import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import './UserUpdateForm.css';
 import apiClient from '../../utils/axios-with-auth';
 import { apiURL } from '../../constants/index';
+
 class UserUpdateForm extends Component {
     state = {
         name: '',
