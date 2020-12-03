@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import apiClient from '../../utils/axios-with-auth';
 import { apiURL } from '../../constants/index';
 import _ from 'lodash';
 import './UserSearch.css';
@@ -14,13 +14,9 @@ class UserSearch extends Component {
     };
 
     deleteUserHandler = (userId) => {
-        const token = localStorage.getItem('token');
-        axios.delete(`${apiURL}/api/v1/users/${userId}`, {
-            headers: {
-            "Authorization" : `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        }
-      }).then(result => {
+      apiClient.delete(`${apiURL}/api/v1/users/${userId}`, 
+      )
+      .then(result => {
         const deleted = result;
         if(deleted) {
           alert ('Successfully deleted');
@@ -29,13 +25,8 @@ class UserSearch extends Component {
       }
 
     inputChangeHandler = _.debounce((search) => {
-        const token = localStorage.getItem('token');
-        axios.get(`${apiURL}/api/v1/users/search?search=${search}`, {
-            headers: {
-            "Authorization" : `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        })
+        apiClient.get(`${apiURL}/api/v1/users/search?search=${search}`, 
+        )
         .then(result => {
             this.setState({
                 users: result.data,

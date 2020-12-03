@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
+import apiClient from '../utils/axios-with-auth';
 import { apiURL } from '../../src/constants/index';
 import User from './User/User';
 import UserSearch from '../components/User/UserSearch';
@@ -14,13 +14,9 @@ class App extends Component {
   }
 
   deleteUserHandler = (userId) => {
-    const token = localStorage.getItem('token');
-    axios.delete(`${apiURL}/api/v1/users/${userId}`, {
-        headers: {
-        "Authorization" : `Bearer ${token}`,
-        'Content-Type': 'application/json',
-    }
-  }).then(result => {
+    apiClient.delete(`${apiURL}/api/v1/users/${userId}`, 
+    )
+    .then(result => {
     const deleted = result;
     if(deleted) {
       alert ('Successfully deleted');
@@ -31,17 +27,14 @@ class App extends Component {
   toggleUsersHandler = () => {
     const doesShow = this.state.showUsers;
     this.setState({showUsers: !doesShow});
-    const token = localStorage.getItem('token');
-    axios.get(`${apiURL}/api/v1/users`, {
-        headers: {
-        "Authorization" : `Bearer ${token}`,
-        'Content-Type': 'application/json',
-    },
-    }).then(result => {
+    apiClient.get(`${apiURL}/api/v1/users`, 
+    )
+    .then(result => {
       this.setState({
           users: result.data,
       });
-    }).catch(error => {
+    })
+    .catch(error => {
       this.setState({
        error,
      }); 

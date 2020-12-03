@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import './UserUpdateForm.css';
-import axios from 'axios';
+import apiClient from '../../utils/axios-with-auth';
 import { apiURL } from '../../constants/index';
-
 class UserUpdateForm extends Component {
     state = {
         name: '',
@@ -43,16 +42,9 @@ class UserUpdateForm extends Component {
 
     getCurrentUser = () => {
         const user = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        //localStorage.clear();
         console.log(user);
-        console.log(token);
-        axios.get(`${apiURL}/api/v1/users/me`, {
-            user,
-            headers: {
-            "Authorization" : `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
+        apiClient.get(`${apiURL}/api/v1/users/me`, {
+            user
         }).then(res => {
             this.setState({
                 name: res.data.name,
@@ -79,13 +71,8 @@ class UserUpdateForm extends Component {
           phone: this.state.phone,
         };
         console.log(user);
-        const token = localStorage.getItem('token');
-        axios.put(`${apiURL}/api/v1/users/me`, user, {
-            headers: {
-            "Authorization" : `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        })
+        apiClient.put(`${apiURL}/api/v1/users/me`, user, 
+        )
         .then(res => {
             this.setState({responseMessage: 'Your data was updated'});
             console.log(res);
