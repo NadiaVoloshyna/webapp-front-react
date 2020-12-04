@@ -42,11 +42,12 @@ class UserUpdateForm extends Component {
     }
 
     getCurrentUser = () => {
-        const user = localStorage.getItem('user');
+        const user = JSON.parse(localStorage.getItem('user'));
         console.log(user);
         apiClient.get(`${apiURL}/api/v1/users/me`, {
             user
         }).then(res => {
+            console.log(res);
             this.setState({
                 name: res.data.name,
                 email: res.data.email,

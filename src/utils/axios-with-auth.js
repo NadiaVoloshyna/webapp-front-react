@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import * as JWT from 'jwt-decode';
-// import history from '../history';
+import history from '../history';
 // import { apiURL } from '../constants';
 
 const authHeader = {
@@ -9,12 +9,12 @@ const authHeader = {
     : null,
 };
 
-// const authorize = response => {
-//   if (response.Message) {
-//     isomorphicCookie.remove('token');
-//     history.push('/login');
-//   }
-// };
+const authorize = response => {
+  if (response.Message) {
+    localStorage.removeItem('token');
+    history.push('/login');
+  }
+};
 
 export default {
     async get(url, data) {
@@ -23,7 +23,7 @@ export default {
        headers: authHeader,
        params: data,
     });
-    //     authorize(response.data);
+    authorize(response.data);
      return response;
    },
 
@@ -32,7 +32,7 @@ export default {
         const response = await axios.put(url, JSON.stringify(data), {
         headers: { ...authHeader, 'Content-Type': 'application/json' },
         });
-    //    authorize(response.data);
+    authorize(response.data);
         return response;
     },
 
@@ -42,7 +42,7 @@ export default {
         headers: authHeader,
         params: data,
     });
-    //     authorize(response.data);
+    authorize(response.data);
         return response;
     },
 

@@ -11,6 +11,7 @@
     "isomorphic-cookie": "^1.2.4",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-axios": "^2.0.3",

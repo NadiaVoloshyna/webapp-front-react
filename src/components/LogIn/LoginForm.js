@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import './LoginForm.css';
 import axios from 'axios';
+//import moment from 'moment';
 import { apiURL } from '../../constants/index';
 
 class LoginForm extends Component {
@@ -30,16 +31,15 @@ class LoginForm extends Component {
           email: this.state.email,
           password: this.state.password,
         };
+  
         axios.post(`${apiURL}/api/v1/auth/login`, user )
           .then(res => {
             const authToken = res.data.token;
             const user = res.config.data;
             localStorage.setItem('token', authToken);
-            localStorage.setItem('user', user);
+        
+            localStorage.setItem('user', JSON.stringify(user));
             this.setState({responseMessage: 'You are logged in'});
-        //     setTimeout(()=>{
-        //         localStorage.clear();
-        //   },3000)
             console.log(res);
             console.log(res.config.data);
           })
@@ -50,7 +50,6 @@ class LoginForm extends Component {
             }
           });
       }
-
 // // Store the data with time
 // const EXPIRE_TIME = 1000*60*60;
 // localStorage.setItem('storedData', JSON.stringify({
