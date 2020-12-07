@@ -6,11 +6,45 @@
     padding: 8px;
     cursor: pointer;
   }
-  .red {
+  .LightGreen {
     background-color: rgb(95, 189, 95);
     color: white;
     font: inherit;
     border: 1px solid blue;
     padding: 8px;
     cursor: pointer;
+  }
+  .Pagination {
+    margin: 15px auto; 
+    display: flex;
+    list-style: none;
+    outline: none;
+    justify-content: center;
+  }
+  .Pagination > li > a {
+    border: 1px solid grey;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .Pagination > li > a,
+  .Pagination > li > span {
+    color: grey;
+  }
+
+  .Pagination > .active > a {
+    background-color: grey;
+    border-color: grey;
+    color: #fff;
+  }
+
+  .Pagination > .active > a,
+  .Pagination > .active > span,
+  .Pagination > .active > a:hover,
+  .Pagination > .active > span:hover,
+  .Pagination > .active > a:focus,
+  .Pagination > .active > span:focus {
+    background-color: #3f426b;
+    border-color: #3f426b;
+    outline: none;
   }

@@ -15,6 +15,10 @@ class App extends Component {
       <LoginForm />
       <UserUpdateForm />
       <UserPage />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
   }

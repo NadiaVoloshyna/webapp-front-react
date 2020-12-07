@@ -3,11 +3,13 @@ import './User.css';
 
 const User = (props) => {
     return (
-        <div className="User">
+        <div className="UserContainer">
+            <div className="User">
             {props.name} <br />
             {props.email} <br />
             {props.phone}<hr />
             <button onClick={props.delete}>Delete User</button>
+        </div>
         </div>
     )
 };

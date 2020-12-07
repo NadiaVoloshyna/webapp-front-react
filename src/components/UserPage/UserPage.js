@@ -2,14 +2,33 @@ import React, { Component } from 'react';
 import './UserPage.css';
 import apiClient from '../../utils/axios-with-auth';
 import { apiURL } from '../../constants/index';
+import ReactPaginate from 'react-paginate';
 import User from './User/User';
 import UserSearch from './UserSearch/UserSearch';
 
 class UserPage extends Component {
     state = {
         users: [],
-        showUsers: false
+        showUsers: false,
+        currentPage: 0,
+        offset: 0,
+        perPage: 5,
     }
+
+pageCount() {
+    return Math.ceil(this.state.users.length / this.state.perPage);
+  }
+
+  handlePageClick = e => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * this.state.perPage;
+    this.setState(
+      {
+        offset,
+        selectedPage,
+      },
+    );
+  };
 
 deleteUserHandler = (userId) => {
     apiClient.delete(`${apiURL}/api/v1/users/${userId}`, 
@@ -44,9 +63,11 @@ render() {
     const classes = [];
 
     if(this.state.showUsers) {
+          const data = this.state.users;
+          const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
       users = (
         <div>
-          {this.state.users.map((user) => {
+          {slice.map((user) => {
             return <User 
             key={user.id}
             name={user.name} 
@@ -59,7 +80,7 @@ render() {
       classes.push('Button');
     } 
     else {
-      classes.push('red');
+      classes.push('LightGreen');
     }
 
     return(
@@ -76,6 +97,17 @@ render() {
         <div>
         <button className={classes} onClick={this.toggleUsersHandler}>Toggle Users</button>
         {users}
+        <ReactPaginate
+        containerClassName="Pagination"
+        activeClassName="active"
+        previousLabel="<"
+        nextLabel=">"
+        breakLabel="..."
+        pageCount={this.pageCount()}
+        onPageChange={this.handlePageClick}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        />
         </div> 
 
       </div>
