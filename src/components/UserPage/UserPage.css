@@ -1,13 +1,13 @@
 .Button {
-    background-color: green;
+    background-color: #3f426b;
     color: white;
     font: inherit;
     border: 1px solid blue;
     padding: 8px;
     cursor: pointer;
   }
-  .LightGreen {
-    background-color: rgb(95, 189, 95);
+  .Light {
+    background-color: #63647c;
     color: white;
     font: inherit;
     border: 1px solid blue;

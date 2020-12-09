@@ -3,6 +3,7 @@ import './UserPage.css';
 import apiClient from '../../utils/axios-with-auth';
 import { apiURL } from '../../constants/index';
 import ReactPaginate from 'react-paginate';
+//import Loader from 'react-loader-spinner';
 import User from './User/User';
 import UserSearch from './UserSearch/UserSearch';
 
@@ -13,6 +14,8 @@ class UserPage extends Component {
         currentPage: 0,
         offset: 0,
         perPage: 5,
+        //spinnerLoading:false,
+        //isLoading: false,
     }
 
 pageCount() {
@@ -44,6 +47,7 @@ deleteUserHandler = (userId) => {
 toggleUsersHandler = () => {
     const doesShow = this.state.showUsers;
     this.setState({showUsers: !doesShow});
+    
     apiClient.get(`${apiURL}/api/v1/users`, 
     )
     .then(result => {
@@ -58,10 +62,13 @@ toggleUsersHandler = () => {
   });
 };
 
+componentDidMount() {
+  this.pageCount();
+}
+
 render() {
     let users = null;
     const classes = [];
-
     if(this.state.showUsers) {
           const data = this.state.users;
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
@@ -77,12 +84,27 @@ render() {
           })}
       </div> 
       );
+      
       classes.push('Button');
     } 
     else {
-      classes.push('LightGreen');
+      classes.push('Light');
     }
 
+    // if(this.state.isLoading) {
+    //   this.setState({spinnerLoading: true});
+    //   return (
+    //     <div>
+    //       <Loader
+    //       type="Puff"
+    //       color="00BFFF"
+    //       height={100}
+    //       width={100}
+    //       visible={this.state.spinnerLoading} />
+    //     </div>
+    //   )
+    // }
+        
     return(
       <div>
         <div>

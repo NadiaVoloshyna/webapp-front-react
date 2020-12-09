@@ -10,7 +10,7 @@ class App extends Component {
 
     return (
     <div className="App">
-      <h1>This is my webapp</h1>
+      <h1>Users Manager</h1>
       <RegisterForm />
       <LoginForm />
       <UserUpdateForm />
