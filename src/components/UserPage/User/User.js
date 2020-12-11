@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import './User.css';
 
 const User = (props) => {
+    // useEffect(() => {
+    //     console.log('User.js useEffect');
+    // }, [props.name]);
+
     return (
         <div className="UserContainer">
             <div className="User">

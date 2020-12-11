@@ -45,7 +45,6 @@ class UserSearch extends Component {
         });
     }, 700);
 
-
     render() {
         return (
         <div className="Search">

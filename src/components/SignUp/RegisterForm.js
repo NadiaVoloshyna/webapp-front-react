@@ -109,4 +109,4 @@ class RegisterForm extends Component {
     }
 };
 
-export default RegisterForm;
+export default React.memo(RegisterForm);

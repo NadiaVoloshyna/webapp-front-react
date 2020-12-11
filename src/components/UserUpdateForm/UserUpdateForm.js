@@ -147,4 +147,4 @@ class UserUpdateForm extends Component {
     }
 };
 
-export default UserUpdateForm;
+export default React.memo(UserUpdateForm);
