@@ -6,6 +6,11 @@ import axios from 'axios';
 import { apiURL } from '../../constants/index';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.nameInputRef = React.createRef();
+    this.emailInputRef = React.createRef();
+  }
     state = {
         email: '',
         password: '',
@@ -50,6 +55,12 @@ class LoginForm extends Component {
             }
           });
       }
+
+    componentDidMount() {
+      this.nameInputRef.current.focus();
+      this.emailInputRef.current.focus();
+    }
+
 // // Store the data with time
 // const EXPIRE_TIME = 1000*60*60;
 // localStorage.setItem('storedData', JSON.stringify({
@@ -68,6 +79,7 @@ class LoginForm extends Component {
             <form onSubmit={this.handleSubmit}>
                     <input 
                     name="email"
+                    ref={this.emailInputRef}
                     type="email"
                     value={this.state.email}
                     placeholder="Enter your email"
@@ -77,6 +89,7 @@ class LoginForm extends Component {
                     />
                     <input 
                     name="password"
+                    ref={this.nameInputRef}
                     type="password"
                     value={this.state.password}
                     placeholder="Enter your password"

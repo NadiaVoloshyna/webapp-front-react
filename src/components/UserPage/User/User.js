@@ -1,11 +1,12 @@
-import React, {useEffect } from 'react';
+import React from 'react';
 import './User.css';
 import PropTypes from 'prop-types';
 
 const User = (props) => {
+
     // useEffect(() => {
-    //     console.log('User.js useEffect');
-    // }, [props.name]);
+    //     divRef.current.focus();
+    // }, []);
 
     return (
         <div className="UserContainer">
@@ -14,7 +15,7 @@ const User = (props) => {
             {props.email} <br />
             {props.phone}<hr />
             <button onClick={props.delete}>Delete User</button>
-        </div>
+            </div>
         </div>
     )
 };
