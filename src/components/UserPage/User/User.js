@@ -1,5 +1,6 @@
 import React, {useEffect } from 'react';
 import './User.css';
+import PropTypes from 'prop-types';
 
 const User = (props) => {
     // useEffect(() => {
@@ -17,5 +18,12 @@ const User = (props) => {
         </div>
     )
 };
+
+User.propTypes = {
+    delete: PropTypes.func,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string
+}
 
 export default User;
