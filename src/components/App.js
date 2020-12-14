@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Layout from './Layout/Layout';
 import UserPage from '../components/UserPage/UserPage';
 import RegisterForm from '../components/SignUp/RegisterForm';
 import LoginForm from '../components/LogIn/LoginForm';
@@ -10,9 +11,12 @@ class App extends Component {
 
     return (
     <div className="App">
+      <Layout>
+        <LoginForm />
+      </Layout>
       <h1>Users Manager</h1>
       <RegisterForm />
-      <LoginForm />
+      
       <UserUpdateForm />
       <UserPage />
       <br />

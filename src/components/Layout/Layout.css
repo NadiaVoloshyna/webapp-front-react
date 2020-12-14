@@ -1,0 +1,8 @@
+.Layout {
+    width: 100%;
+    max-width: 100vw;
+    min-height: calc(100vh - 15rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

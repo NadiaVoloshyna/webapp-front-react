@@ -75,9 +75,10 @@ class LoginForm extends Component {
     render() {
         return(
         <div className="LoginForm">
-            <h4>Please log in</h4>
+            <h4 className="LoginText">Please log in</h4> <br />
             <form onSubmit={this.handleSubmit}>
                     <input 
+                    className="LoginInput"
                     name="email"
                     ref={this.emailInputRef}
                     type="email"
@@ -86,8 +87,9 @@ class LoginForm extends Component {
                     description="email"
                     validate={VALIDATION_RULES.EMAIL}
                     onChange={(e) => this.handleChangeEmail(e.target.value)}
-                    />
+                    /> <br />
                     <input 
+                    className="LoginInput"
                     name="password"
                     ref={this.nameInputRef}
                     type="password"
@@ -96,10 +98,12 @@ class LoginForm extends Component {
                     description="password"
                     validate={VALIDATION_RULES.PASSWORD}
                     onChange={(e) => this.handleChangePassword(e.target.value)}
-                    />
-                <button type="submit">Submit</button>
+                    /> <br />
+                <button 
+                className="LoginButton"
+                type="submit">Submit</button>
             </form>
-        <p>{this.state.responseMessage}</p>
+        <p className="Response">{this.state.responseMessage}</p>
         </div>
         );
     }

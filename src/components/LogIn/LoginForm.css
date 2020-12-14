@@ -1,0 +1,35 @@
+/* .LoginForm {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+} */
+.LoginText {
+    color: #8588af;
+    font-size: 20px;
+    margin-bottom: auto;
+}
+.LoginInput {
+    border: 1px solid #8588af;
+    border-radius: 10px;
+    height: 33px;
+    padding: 6px 7px;
+    font-size: 15px;
+    width: 100%;
+    min-width: 120px;
+    color: #777;
+    margin: 7px;
+}
+.LoginButton {
+    font-weight: 300;
+    font-size: 14px;
+    border: none;
+    background: #8588af;
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+} 
+.Response {
+    color: #8588af;
+    font-size: 14px;
+}
