@@ -3,7 +3,8 @@ import './App.css';
 import Layout from './Layout/Layout';
 import UserPage from '../components/UserPage/UserPage';
 import RegisterForm from '../components/SignUp/RegisterForm';
-import LoginForm from '../components/LogIn/LoginForm';
+//import LoginForm from '../components/LogIn/LoginForm';
+import LoginPage from './LogIn/LoginPage';
 import UserUpdateForm from './UserUpdateForm/UserUpdateForm';
 class App extends Component {
 
@@ -12,11 +13,10 @@ class App extends Component {
     return (
     <div className="App">
       <Layout>
-        <LoginForm />
+        <LoginPage />
       </Layout>
       <h1>Users Manager</h1>
       <RegisterForm />
-      
       <UserUpdateForm />
       <UserPage />
       <br />

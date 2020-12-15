@@ -1,0 +1,10 @@
+.Wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .Banner {
+     margin-bottom: -5px;
+  }
+  
+   

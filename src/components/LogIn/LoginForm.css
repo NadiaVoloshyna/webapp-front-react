@@ -4,12 +4,12 @@
     position: relative;
 } */
 .LoginText {
-    color: #8588af;
+    color: #41447a;
     font-size: 20px;
     margin-bottom: auto;
 }
 .LoginInput {
-    border: 1px solid #8588af;
+    border: 1px solid #41447a;
     border-radius: 10px;
     height: 33px;
     padding: 6px 7px;
@@ -23,13 +23,13 @@
     font-weight: 300;
     font-size: 14px;
     border: none;
-    background: #8588af;
+    background: #41447a;
     color: #fff;
     padding: 10px 15px;
     margin-top: 10px;
     cursor: pointer;
 } 
 .Response {
-    color: #8588af;
+    color: #41447a;
     font-size: 14px;
 }
