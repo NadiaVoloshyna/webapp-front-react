@@ -6,6 +6,7 @@ import RegisterForm from '../components/SignUp/RegisterForm';
 //import LoginForm from '../components/LogIn/LoginForm';
 import LoginPage from './LogIn/LoginPage';
 import UserUpdateForm from './UserUpdateForm/UserUpdateForm';
+import Portfolio from './Portfolio/Portfolio';
 class App extends Component {
 
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
       <UserPage />
       <br />
       <br />
+      <Portfolio />
       <br />
       <br />
     </div>

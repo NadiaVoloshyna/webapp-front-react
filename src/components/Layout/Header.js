@@ -10,6 +10,9 @@ const Header = () => {
                 <div className="LogoH">
                     <img className="ImageH" src={logo} alt="logo" />
                 </div>
+                <div className="Portfolio">
+                    <a href="http://localhost:3000/">Portfolio</a>
+                </div>
         {/* //<div>ToolBar, SideDrawer, Backdrop</div> */}
             </header>
         </Auxiliary>

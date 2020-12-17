@@ -9,7 +9,7 @@
   padding: 0 3rem;
   background-color: #41447a;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 .LogoH {
@@ -20,4 +20,12 @@
 .ImageH {
       height: 4rem;
 }
+.Portfolio {
+  margin-left: 900px;
+}
+.Portfolio a {
+  font-size: 1rem;
+  color: #eee;
+}
+
   

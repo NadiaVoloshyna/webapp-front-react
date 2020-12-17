@@ -1,0 +1,18 @@
+.PostContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Post {
+    text-align: center;
+    width: 50%;
+	font-style: inherit;
+    border: 2px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    border-radius: 10px;
+    margin: 16px auto;
+    padding: 5px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: space-around;
+}
