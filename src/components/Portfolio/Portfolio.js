@@ -4,6 +4,7 @@ import { apiURL } from '../../constants/index';
 import apiClient from '../../utils/axios-with-auth';
 import ReactPaginate from 'react-paginate';
 import Post from './Post';
+//import File from "./File";
 
 class Portfolio extends Component {
     constructor(props) {
@@ -47,6 +48,26 @@ class Portfolio extends Component {
       });
     };
 
+    removePostHandler = (postId) => {
+        apiClient.delete(`${apiURL}/api/v1/posts/${postId}`)
+        .then(result => {
+        const deleted = result;
+        if(deleted) {
+          alert ('Successfully deleted');
+      }
+      })
+      }
+
+      removeFileHandler = (fileId) => {
+        apiClient.delete(`${apiURL}/api/v1/posts/delete/${fileId}`)
+        .then(result => {
+        const deleted = result;
+        if(deleted) {
+          alert ('Successfully deleted');
+      }
+      })
+      }
+
     componentDidMount() {
         this.postsHandler();
         this.pageCount();
@@ -57,16 +78,26 @@ class Portfolio extends Component {
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
       let posts = (
         <div>
-          {slice.map((post) => {
+          {slice.map((post,file) => {
             return <Post 
             key={post.id}
             title={post.title} 
             body={post.body} 
-            name={post.file[0]}
-            url={post.file[1]}
-            //delete={() => this.deleteUserHandler(user.id)} 
+            name={file.name}
+            url={file.url}
+            removeP={() => this.removePostHandler(post.id)} 
+            removeF={() => this.removeFileHandler(file.id)}
             />
           })}
+          {/* <ul>
+              {slice.map(file => {
+                  return <File
+                  key={file.id}
+                  name={file.name}
+                  url={file.url}
+                  />
+              })}
+          </ul> */}
       </div> 
       );
       

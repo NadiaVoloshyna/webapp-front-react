@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Post.css';
 import File from './File';
+import Button from '../Button/Button';
 
 const Post = (props) => {
 
@@ -10,8 +11,8 @@ const Post = (props) => {
             <div className="Post">
             <div>{props.title}</div> 
             <div>{props.body} </div>
+            <Button onClick={props.removeP}>Delete Post</Button>
             <File />
-            {/* <button onClick={props.delete}>Delete User</button> */}
             </div>
         </div>
     )

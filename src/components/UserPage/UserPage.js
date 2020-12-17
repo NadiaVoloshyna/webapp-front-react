@@ -33,8 +33,7 @@ pageCount() {
   };
 
 deleteUserHandler = (userId) => {
-    apiClient.delete(`${apiURL}/api/v1/users/${userId}`, 
-    )
+    apiClient.delete(`${apiURL}/api/v1/users/${userId}`)
     .then(result => {
     const deleted = result;
     if(deleted) {
