@@ -7,15 +7,15 @@ import Post from './Post';
 //import File from "./File";
 
 class Portfolio extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
             posts: [],
             currentPage: 0,
             offset: 0,
             perPage: 5,
         };
-      }
+  }
 
     pageCount() {
         return Math.ceil(this.state.posts.length / this.state.perPage);
@@ -85,8 +85,8 @@ class Portfolio extends Component {
             body={post.body} 
             name={file.name}
             url={file.url}
-            removeP={() => this.removePostHandler(post.id)} 
-            removeF={() => this.removeFileHandler(file.id)}
+            removePost={() => this.removePostHandler(post.id)} 
+            removeFile={() => this.removeFileHandler(file.id)}
             />
           })}
           {/* <ul>

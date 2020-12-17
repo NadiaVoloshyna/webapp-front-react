@@ -8,18 +8,17 @@ const Post = (props) => {
 
     return (
         <div className="PostContainer">
-            <div className="Post">
             <div>{props.title}</div> 
             <div>{props.body} </div>
-            <Button onClick={props.removeP}>Delete Post</Button>
+            <Button onClick={props.removePost}>Delete Post</Button>
+            {/* <button onClick={props.removePost}>Delete Post</button> */}
             <File />
-            </div>
         </div>
     )
 };
 
 Post.propTypes = {
-    //delete: PropTypes.func,
+    removePost: PropTypes.func,
     title: PropTypes.string,
     body: PropTypes.string,
 }

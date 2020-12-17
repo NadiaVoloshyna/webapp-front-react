@@ -9,13 +9,14 @@ const File = (props) => {
             <div className="File">
             <div>{props.name}</div> 
             <div>{props.url} </div>
-            <Button onClick={props.removeF}>Delete File</Button>
+            <Button onClick={props.removeFile}>Delete File</Button>
             </div>
         </div>
     )
 };
 
 File.propTypes = {
+    removeFile: PropTypes.func,
     name: PropTypes.string,
     url: PropTypes.string,
 }
