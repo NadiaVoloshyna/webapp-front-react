@@ -45,8 +45,7 @@ deleteUserHandler = (userId) => {
 toggleUsersHandler = () => {
     const doesShow = this.state.showUsers;
     this.setState({showUsers: !doesShow});
-    apiClient.get(`${apiURL}/api/v1/users`, 
-    )
+    apiClient.get(`${apiURL}/api/v1/users`)
     .then(result => {
       this.setState({
           users: result.data,
@@ -86,7 +85,7 @@ render() {
       </div> 
       );
       
-      classes.push('Button');
+      classes.push('ToggleButton');
     } 
     else {
       classes.push('Light');

@@ -9,7 +9,7 @@ const File = (props) => {
             <div className="File">
             <div>{props.name}</div> 
             <div>{props.url} </div>
-            <Button onClick={props.removeFile}>Delete File</Button>
+            <Button onClick={props.removeFile} title="Delete File" />
             </div>
         </div>
     )
@@ -22,3 +22,4 @@ File.propTypes = {
 }
 
 export default File;
+

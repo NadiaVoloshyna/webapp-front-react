@@ -36,7 +36,7 @@ class Portfolio extends Component {
         apiClient.get(`${apiURL}/api/v1/posts`, 
         )
         .then(result => {
-            console.log(result.data[0].file[0].name);
+          console.log(result.data[0].file[0].name);
           this.setState({
               posts: result.data,
           });
@@ -105,7 +105,7 @@ class Portfolio extends Component {
             <Auxiliary>
                 <div>
                 <div>
-                    <h3>Posts Page</h3>
+                    <h3>Portfolio Page</h3>
                 </div>
                     <div>
                    {posts}

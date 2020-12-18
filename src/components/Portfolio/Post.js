@@ -10,8 +10,7 @@ const Post = (props) => {
         <div className="PostContainer">
             <div>{props.title}</div> 
             <div>{props.body} </div>
-            <Button onClick={props.removePost}>Delete Post</Button>
-            {/* <button onClick={props.removePost}>Delete Post</button> */}
+            <Button onClick={props.removePost} title="Delete Post" />
             <File />
         </div>
     )
