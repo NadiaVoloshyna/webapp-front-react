@@ -8,6 +8,7 @@
     font-size: 0.8em;
     padding: 5px 10px;
     box-shadow: 2px 2px 2px #252741;
+    border-radius: 5px;
 }
 .Button:hover, .Button:active {
     background-color: #63647c;

@@ -4,19 +4,16 @@ import { apiURL } from '../../constants/index';
 import apiClient from '../../utils/axios-with-auth';
 import ReactPaginate from 'react-paginate';
 import Post from './Post';
-//import File from "./File";
+import File from "./File";
 
 class Portfolio extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-            posts: [],
-            currentPage: 0,
-            offset: 0,
-            perPage: 5,
-        };
-  }
-
+    state = {
+              posts: [],
+              currentPage: 0,
+              offset: 0,
+              perPage: 5,
+          };
+ 
     pageCount() {
         return Math.ceil(this.state.posts.length / this.state.perPage);
       }
@@ -36,7 +33,7 @@ class Portfolio extends Component {
         apiClient.get(`${apiURL}/api/v1/posts`, 
         )
         .then(result => {
-          console.log(result.data[0].file[0].name);
+          //console.log(result.data[0].file[0].name);
           this.setState({
               posts: result.data,
           });
@@ -76,31 +73,33 @@ class Portfolio extends Component {
     render() {
           const data = this.state.posts;
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
-      let posts = (
-        <div>
-          {slice.map((post,file) => {
-            return <Post 
-            key={post.id}
-            title={post.title} 
-            body={post.body} 
-            name={file.name}
-            url={file.url}
-            removePost={() => this.removePostHandler(post.id)} 
-            removeFile={() => this.removeFileHandler(file.id)}
-            />
-          })}
-          {/* <ul>
-              {slice.map(file => {
-                  return <File
-                  key={file.id}
-                  name={file.name}
-                  url={file.url}
-                  />
-              })}
-          </ul> */}
-      </div> 
-      );
-      
+          let posts = (
+            <div>
+              {slice.map((post) => {
+                let file = post.file;
+                let name;
+                let url;
+                let id;
+                for(let i = 0; i < file.length; ++i) {
+                 name = file[i].name;
+                 url = file[i].url;
+                 id = file[i].id;
+                }
+                return (
+                <Post 
+                key={post.id}
+                title={post.title} 
+                body={post.body} 
+                name={name}
+                url={url}
+                removePost={() => this.removePostHandler(post.id)} 
+                removeFile={() => this.removeFileHandler(id)}
+                />
+                        );
+                    })}
+                </div> 
+            );
+        
         return (
             <Auxiliary>
                 <div>

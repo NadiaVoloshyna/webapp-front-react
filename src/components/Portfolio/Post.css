@@ -1,14 +1,30 @@
+.Container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
 .PostContainer {
-    width: 80%;
+    width: 50%;
 	font-style: inherit;
-    border: 2px solid #eee;
-    box-shadow: 0 2px 3px #ccc;
+    border: 0.5px solid #41447a;
+    box-shadow: 0 3px 4px #41447a;
     border-radius: 10px;
-    margin: 14px auto;
+    margin: 14px 5px;
     padding: 10px 10px;
     background-color: #ccc;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
 }
-
+.Title, .Body {
+    display: flex;
+    align-items: flex-start;
+    padding: 5px;
+}
+.Title {
+    border-right: 2px solid #41447a;
+}
+.Body {
+    text-align: left;
+}
+.ButtonFile {
+   
+}

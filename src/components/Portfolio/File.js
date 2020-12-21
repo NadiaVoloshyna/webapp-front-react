@@ -6,11 +6,13 @@ import Button from '../Button/Button';
 const File = (props) => {
     return (
         <div className="FileContainer">
-            <div className="File">
-            <div>{props.name}</div> 
-            <div>{props.url} </div>
-            <Button onClick={props.removeFile} title="Delete File" />
+            <div>
+                {props.name}
             </div>
+            <div className="Url">
+                {props.url}
+            </div>
+        <Button onClick={props.removeFile} title="Delete File" />
         </div>
     )
 };

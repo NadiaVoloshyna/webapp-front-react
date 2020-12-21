@@ -1,0 +1,9 @@
+.FileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Url {
+    margin-left: 10px;
+    margin-right: 10px;
+}
