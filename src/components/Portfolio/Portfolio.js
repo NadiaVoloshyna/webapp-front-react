@@ -4,7 +4,6 @@ import { apiURL } from '../../constants/index';
 import apiClient from '../../utils/axios-with-auth';
 import ReactPaginate from 'react-paginate';
 import Post from './Post';
-import File from "./File";
 
 class Portfolio extends Component {
     state = {
@@ -33,7 +32,6 @@ class Portfolio extends Component {
         apiClient.get(`${apiURL}/api/v1/posts`, 
         )
         .then(result => {
-          //console.log(result.data[0].file[0].name);
           this.setState({
               posts: result.data,
           });

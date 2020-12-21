@@ -15,8 +15,6 @@
     display: flex;
 }
 .Title, .Body {
-    display: flex;
-    align-items: flex-start;
     padding: 5px;
 }
 .Title {
@@ -24,7 +22,4 @@
 }
 .Body {
     text-align: left;
-}
-.ButtonFile {
-   
 }
