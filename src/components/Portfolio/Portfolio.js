@@ -11,6 +11,9 @@ class Portfolio extends Component {
               currentPage: 0,
               offset: 0,
               perPage: 5,
+              expanded: false,
+              charsToShow: 80,
+              postLength: 0,
           };
  
     pageCount() {
@@ -20,12 +23,10 @@ class Portfolio extends Component {
       handlePageClick = e => {
         const selectedPage = e.selected;
         const offset = selectedPage * this.state.perPage;
-        this.setState(
-          {
+        this.setState({
             offset,
             selectedPage,
-          },
-        );
+          });
       };
 
     postsHandler = () => {
@@ -63,6 +64,13 @@ class Portfolio extends Component {
       })
       }
 
+      calculatePostLength = (postLength) => {
+        this.setState({
+          postLength: postLength,
+        });
+      }
+      
+
     componentDidMount() {
         this.postsHandler();
         this.pageCount();
@@ -74,6 +82,8 @@ class Portfolio extends Component {
           let posts = (
             <div>
               {slice.map((post) => {
+                let postLength = post.body.length;
+                // console.log(postLength);
                 let file = post.file;
                 let name;
                 let url;
@@ -90,6 +100,7 @@ class Portfolio extends Component {
                 body={post.body} 
                 name={name}
                 url={url}
+                calculate={() => this.calculatePostLength(postLength)}
                 removePost={() => this.removePostHandler(post.id)} 
                 removeFile={() => this.removeFileHandler(id)}
                 />
