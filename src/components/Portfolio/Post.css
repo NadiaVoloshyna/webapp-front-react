@@ -23,9 +23,13 @@
 .PostButton {
     border: none;
     background-color: #ccc;
-    position: absolute;
-    margin-top: 3.3em;
-    margin-left: 27.5em;
+}
+.PostButton.collapsed {
+    position: relative;
+    float: right;
+}
+.PostButton.expanded {
+    display: none;
 }
 .PostButton:hover {
     cursor: pointer;

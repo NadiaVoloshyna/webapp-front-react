@@ -21,15 +21,15 @@ const toggleExpanded = () => {
                     {props.title}
                 </div>
                 <div className={`Content ${expandedState ? 'collapsed' : 'expanded'}`}>
-                    <button className="PostButton" onClick={toggleExpanded}>
-                        {expandedState ? '...see more' : '...see less'}
+                    <button className={`PostButton ${expandedState ? 'collapsed' : 'expanded'}`} onClick={toggleExpanded}>
+                        ...see more
+                        {/* {expandedState ? '...see more' : '...see less'} */}
                     </button>
                     {props.body}
                 </div>
             </div>
                 <Button className="ButtonFile" onClick={props.removePost} title="Delete Post" /> 
         </div>
-
         <div>
                <File
                 name={props.name}
