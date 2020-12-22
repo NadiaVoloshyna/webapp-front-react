@@ -14,21 +14,34 @@
     background-color: #ccc;
     display: flex;
 }
-.Title, .Body {
+.Title, .Content {
     padding: 5px;
 }
 .Title {
     border-right: 2px solid #41447a;
 }
-.Body {
-    text-align: left;
-}
 .PostButton {
     border: none;
     background-color: #ccc;
+    position: absolute;
+    margin-top: 3.3em;
+    margin-left: 27.5em;
 }
 .PostButton:hover {
     cursor: pointer;
     text-decoration: underline;
     color: #41447a;
+}
+.Content {
+    overflow: hidden;
+    line-height: 1.2em;
+    height: 3.5em;
+    text-align: left;
+}
+.Content.collapsed{
+    overflow: hidden;
+}
+.Content.expanded{
+    overflow: visible;
+    height: auto;
 }

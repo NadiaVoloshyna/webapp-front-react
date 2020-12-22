@@ -12,7 +12,6 @@ class Portfolio extends Component {
               offset: 0,
               perPage: 5,
               expanded: false,
-              charsToShow: 80,
               postLength: 0,
           };
  
@@ -70,7 +69,6 @@ class Portfolio extends Component {
         });
       }
       
-
     componentDidMount() {
         this.postsHandler();
         this.pageCount();
@@ -83,7 +81,6 @@ class Portfolio extends Component {
             <div>
               {slice.map((post) => {
                 let postLength = post.body.length;
-                // console.log(postLength);
                 let file = post.file;
                 let name;
                 let url;
