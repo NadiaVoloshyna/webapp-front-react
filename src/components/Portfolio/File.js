@@ -4,28 +4,18 @@ import './File.css';
 import Button from '../Button/Button';
 
 const File = (props) => {
-    // const files = props.map(({name, url, removeFile}) => (
-    //     <div className="FileContainer">
-    //         <div>
-    //             {name}
-    //         </div>
-    //         <a className="Url" href={url}>{url}</a>
-    //     <Button onClick={removeFile} title="Delete File" />
-    //     </div>
-    // ))
-    // return (
-    //     <div>
-    //      {files}
-    //     </div>
-    // )
-
-    return (
-        <div className="FileContainer">
+    const files = props.file.map((file,i) => (
+        <div className="FileContainer" key={i}>
             <div>
-                {props.name}
+                {file.name}
             </div>
-            <a className="Url" href={props.url}>{props.url}</a>
+            <a className="Url" href={file.url}>{file.url}</a>
         <Button onClick={props.removeFile} title="Delete File" />
+        </div>
+    ))
+    return (
+        <div>
+         {files}
         </div>
     )
 };

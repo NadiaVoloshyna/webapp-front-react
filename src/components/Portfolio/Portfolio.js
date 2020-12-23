@@ -82,21 +82,16 @@ class Portfolio extends Component {
               {slice.map((post) => {
                 let postLength = post.body.length;
                 let file = post.file;
-                let name;
-                let url;
-                let id;
+                let id = [];
                 for(let i = 0; i < file.length; ++i) {
-                 name = file[i].name;
-                 url = file[i].url;
-                 id = file[i].id;
+                 id.push(file[i].id);
                 }
                 return (
                 <Post 
                 key={post.id}
                 title={post.title} 
                 body={post.body} 
-                name={name}
-                url={url}
+                file={file}
                 calculate={() => this.calculatePostLength(postLength)}
                 removePost={() => this.removePostHandler(post.id)} 
                 removeFile={() => this.removeFileHandler(id)}

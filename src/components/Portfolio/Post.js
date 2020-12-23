@@ -32,8 +32,7 @@ const toggleExpanded = () => {
         </div>
         <div>
                <File
-                name={props.name}
-                url={props.url}
+                file={props.file}
                 removeFile={props.removeFile}
                  /> 
         </div>  
