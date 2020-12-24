@@ -1,7 +1,9 @@
 .FileContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+    margin-top: 5px;
+    
 }
 .Url {
     margin-left: 10px;

@@ -4,8 +4,8 @@ import './File.css';
 import Button from '../Button/Button';
 
 const File = (props) => {
-    const files = props.file.map((file,i) => (
-        <div className="FileContainer" key={i}>
+    const files = props.file.map((file) => (
+        <div className="FileContainer" key={file.id}>
             <div>
                 {file.name}
             </div>

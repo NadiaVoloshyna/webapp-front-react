@@ -1,0 +1,21 @@
+.PostPageForm {
+    display: flex;
+    align-items: baseline;
+    /* position: relative; */
+    justify-content: center;
+}
+.PostPageInput {
+    border: 1px solid #41447a;
+    border-radius: 10px;
+    height: 33px;
+    padding: 6px 7px;
+    font-size: 15px;
+    width: 100%;
+    min-width: 120px;
+    color: #777;
+    margin: 7px;
+}
+.Response {
+    color: #41447a;
+    font-size: 14px;
+}

@@ -36,6 +36,15 @@ export default {
         return response;
     },
 
+    async post(url, data) {
+      this.setHeader();
+      const response = await axios.post(url, JSON.stringify(data), {
+        headers: { ...authHeader, 'Content-Type': 'application/json' },
+      });
+      //authorize(response.data);
+      return response;
+    },
+
     async delete(url, data) {
         this.setHeader();
         const response = await axios.delete(url, {

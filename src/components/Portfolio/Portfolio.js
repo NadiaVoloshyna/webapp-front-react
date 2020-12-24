@@ -54,6 +54,7 @@ class Portfolio extends Component {
       }
 
       removeFileHandler = (fileId) => {
+        console.log(fileId);
         apiClient.delete(`${apiURL}/api/v1/posts/delete/${fileId}`)
         .then(result => {
         const deleted = result;
@@ -82,10 +83,20 @@ class Portfolio extends Component {
               {slice.map((post) => {
                 let postLength = post.body.length;
                 let file = post.file;
-                let id = [];
+                
+                
+
+                let id = [];  
+                //let idd = [];
                 for(let i = 0; i < file.length; ++i) {
-                 id.push(file[i].id);
-                }
+                 id.push(file[i].id);  
+                 //idd = id[i]; 
+          
+              //console.log(idd);                                                 
+                } 
+          
+              //console.log(idd);
+                                                                          
                 return (
                 <Post 
                 key={post.id}
