@@ -4,6 +4,7 @@ import { apiURL } from '../../constants/index';
 import apiClient from '../../utils/axios-with-auth';
 import ReactPaginate from 'react-paginate';
 import Post from './Post';
+import './Portfolio.css';
 
 class Portfolio extends Component {
     state = {
@@ -116,7 +117,7 @@ class Portfolio extends Component {
             <Auxiliary>
                 <div>
                 <div>
-                    <h3>Portfolio Page</h3>
+                    <h3 className="PortfolioText">Portfolio Page</h3>
                 </div>
                     <div>
                    {posts}

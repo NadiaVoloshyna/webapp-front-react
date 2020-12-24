@@ -48,35 +48,41 @@ class PostPage extends Component {
 
         return (
             <div className="PostPageForm">
-                <h4 className="PostPageText">Write a post</h4> <br />
+                <h4 className="PostPageText">Write a post</h4> 
                 <form onSubmit={this.handleSubmit}>
-                    <input 
-                    className="PostPageInput"
+                    <textarea 
+                    className="PostTitleInput"
                     name="title"
                     type="title"
                     value={this.state.title}
-                    placeholder="Write the title of the post"
+                    placeholder="title..."
                     description="title"
                     //validate={VALIDATION_RULES.EMAIL}
                     onChange={(e) => this.handleChangeTitle(e.target.value)}
                     /> <br />
-                    <input 
-                    className="PostPageInput"
+                    <textarea 
+                    className="PostBodyInput"
                     name="body"
                     type="body"
                     value={this.state.body}
-                    placeholder="Write the post"
+                    placeholder="text..."
                     description="body"
                     //validate={VALIDATION_RULES.PASSWORD}
                     onChange={(e) => this.handleChangeBody(e.target.value)}
-                    /> <br />
-                <Button 
-                className="PostPageButton"
-                type="submit"
-                title="Post" />
-            </form>
-        <p className="Response">{this.state.responseMessage}</p>
-        </div>
+                    /> 
+                    <br />
+                    <Button 
+                    className="PostPageButton"
+                    type="submit"
+                    title="Add File" />
+                    <br />
+                    <Button 
+                    className="PostPageButton"
+                    type="submit"
+                    title="Publish" />
+                </form>
+            <p className="Response">{this.state.responseMessage}</p>
+            </div>
 
         );
     }

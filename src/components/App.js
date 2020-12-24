@@ -17,14 +17,18 @@ class App extends Component {
       <Layout>
         <LoginPage />
       </Layout>
+      <br />
+      <br />
       <PostPage />
+      <br />
+      <br />
+      <Portfolio />
+      <br />
+      <br />
       <h1>Users Manager</h1>
       <RegisterForm />
       <UserUpdateForm />
       <UserPage />
-      <br />
-      <br />
-      <Portfolio />
       <br />
       <br />
     </div>
