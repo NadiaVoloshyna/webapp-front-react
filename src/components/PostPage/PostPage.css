@@ -1,4 +1,4 @@
-.PostTitleInput, .PostBodyInput {
+.PostTitleInput, .PostBodyInput, .FileNameInput {
     border: 1px solid #41447a;
     border-radius: 10px;
     height: 25px;
@@ -12,6 +12,10 @@
     height: 200px;
     width: 550px;
 }
+.FileNameInput {
+    height: 20px;
+    width: 200px;
+}
 .PostPageText {
     color: #41447a;
     font-size: 20px;
@@ -22,4 +26,11 @@
     font-size: 14px;
     margin-top: 20px;
 }
+.File {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+
 

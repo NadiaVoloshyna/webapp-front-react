@@ -8,7 +8,10 @@ class PostPage extends Component {
     state = {
         title: '',
         body: '',
+        name: '',
+        url: null,
         responseMessage: '',
+        responseMessageFile: '',
         loading: false,
       }
 
@@ -17,9 +20,16 @@ class PostPage extends Component {
             title: data,
         });
     }
+
     handleChangeBody = (data) => {
         this.setState({ 
             body: data,
+        });
+    }
+
+    handleChangeName = (data) => {
+        this.setState({ 
+            name: data,
         });
     }
 
@@ -43,6 +53,14 @@ class PostPage extends Component {
             }
           });
       }
+
+    chooseFile = () => {
+          
+      }
+
+    addFile = () => {
+
+    }
 
     render() {
 
@@ -72,16 +90,38 @@ class PostPage extends Component {
                     /> 
                     <br />
                     <Button 
-                    className="PostPageButton"
-                    type="submit"
-                    title="Add File" />
-                    <br />
-                    <Button 
-                    className="PostPageButton"
+                    className="PostButton"
                     type="submit"
                     title="Publish" />
+                    <br />
+                    <p className="Response">{this.state.responseMessage}</p>
+                    <br />
+                    <div className="File">
+                    <textarea 
+                    className="FileNameInput"
+                    name="name"
+                    type="name"
+                    value={this.state.name}
+                    placeholder="file name..."
+                    description="name"
+                    //validate={VALIDATION_RULES.PASSWORD}
+                    onChange={(e) => this.handleChangeName(e.target.value)}
+                    /> 
+                    {/* <Button 
+                    onClick={this.chooseFile}
+                    title="Choose File" /> */}
+                    <input 
+                    type="file"
+                    value={this.state.url}
+                    onChange={(e) => this.chooseFile(e.target.value)}
+                    /> 
+                    <Button 
+                    onClick={this.addFile}
+                    title="Add File" />
+                    </div>
+                    <p className="Response">{this.state.responseMessageFile}</p>
                 </form>
-            <p className="Response">{this.state.responseMessage}</p>
+            
             </div>
 
         );
