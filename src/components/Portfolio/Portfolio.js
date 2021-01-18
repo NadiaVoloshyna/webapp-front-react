@@ -83,21 +83,15 @@ class Portfolio extends Component {
             <div>
               {slice.map((post) => {
                 let postLength = post.body.length;
-                let file = post.file;
-                
-                
-
+                let file = post.file;                            
                 let id = [];  
                 //let idd = [];
                 for(let i = 0; i < file.length; ++i) {
                  id.push(file[i].id);  
-                 //idd = id[i]; 
-          
+                 //idd = id[i];         
               //console.log(idd);                                                 
-                } 
-          
-              //console.log(idd);
-                                                                          
+                }          
+              //console.log(idd);                                                                          
                 return (
                 <Post 
                 key={post.id}

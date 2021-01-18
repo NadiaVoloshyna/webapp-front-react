@@ -5,11 +5,13 @@ import apiClient from '../../utils/axios-with-auth';
 import './PostPage.css';
 
 class PostPage extends Component {
-    state = {
+     state = {
+        postId: '',
         title: '',
         body: '',
+        file: null,
         name: '',
-        url: null,
+        url: '',
         responseMessage: '',
         responseMessageFile: '',
         loading: false,
@@ -44,7 +46,7 @@ class PostPage extends Component {
         apiClient.post(`${apiURL}/api/v1/posts`, post )
           .then(res => {
             this.setState({responseMessage: 'Successfully published!'});
-            console.log(res);
+            this.setState({postId: res.data.id})
           })
           .catch(error => {
             const { response } = error;
@@ -54,16 +56,40 @@ class PostPage extends Component {
           });
       }
 
-    chooseFile = () => {
-          
-      }
+    chooseFile = (e) => {
+      this.setState({file:e.target.files[0]});
+    }
 
-    addFile = () => {
+    addFile(e){
+      e.preventDefault() 
+      this.fileUpload(this.state.file).then((response)=>{
+        console.log(response.data);
+      })
+    }
 
+    fileUpload = (file) => {
+      let formData = new FormData(); 
+      formData.append('file', file);
+      console.log(formData);
+
+        const postId = this.state.postId;
+        // const file = this.state.url;
+      const body = this.state.name;
+        
+        apiClient.post(`${apiURL}/api/v1/posts/${postId}`, formData, body)
+          .then(res => {
+            this.setState({responseMessage: 'Successfully added!'});
+            console.log(res);
+          })
+          .catch(error => {
+            const { response } = error;
+            if (response) {
+              this.setState({responseMessageFile: response.data.message});
+            }
+          });
     }
 
     render() {
-
         return (
             <div className="PostPageForm">
                 <h4 className="PostPageText">Write a post</h4> 
@@ -96,6 +122,7 @@ class PostPage extends Component {
                     <br />
                     <p className="Response">{this.state.responseMessage}</p>
                     <br />
+
                     <div className="File">
                     <textarea 
                     className="FileNameInput"
@@ -111,9 +138,13 @@ class PostPage extends Component {
                     onClick={this.chooseFile}
                     title="Choose File" /> */}
                     <input 
+                    name="file"
                     type="file"
+                    //style={{display:'none'}}
+                    //multiple
                     value={this.state.url}
-                    onChange={(e) => this.chooseFile(e.target.value)}
+                    description="file"
+                    onChange={this.chooseFile}
                     /> 
                     <Button 
                     onClick={this.addFile}
