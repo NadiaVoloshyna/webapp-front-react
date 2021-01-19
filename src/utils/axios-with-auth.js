@@ -45,6 +45,14 @@ export default {
       return response;
     },
 
+    async saveUserImage(url, formData) {
+      this.setHeader();
+      const response =  await axios.post(url, formData, {
+          headers: { ...authHeader, 'Content-Type': 'multipart/form-data' },
+        });
+      return response;
+    },
+
     async delete(url, data) {
         this.setHeader();
         const response = await axios.delete(url, {

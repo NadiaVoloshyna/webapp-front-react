@@ -9,9 +9,9 @@ class PostPage extends Component {
         postId: '',
         title: '',
         body: '',
-        file: null,
         name: '',
         url: '',
+        file: null,
         responseMessage: '',
         responseMessageFile: '',
         loading: false,
@@ -35,6 +35,11 @@ class PostPage extends Component {
         });
     }
 
+    chooseFile = (e) => {
+      this.setState({url: e.target.value});
+      this.setState({file:e.target.files[0]})
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         this.setState({loading: true});
@@ -47,6 +52,9 @@ class PostPage extends Component {
           .then(res => {
             this.setState({responseMessage: 'Successfully published!'});
             this.setState({postId: res.data.id})
+            this.addFile(this.state.postId, this.state.file).then((response)=>{
+              console.log(response.data);
+            })
           })
           .catch(error => {
             const { response } = error;
@@ -54,29 +62,18 @@ class PostPage extends Component {
               this.setState({responseMessage: response.data.message});
             }
           });
-      }
+        }
 
-    chooseFile = (e) => {
-      this.setState({file:e.target.files[0]});
-    }
+        addFile = (postId, file) => {
+          const name = this.state.name;
+          const url = this.state.url;
+          
+          const formData = new FormData(); 
+          formData.append('file', file);
+          formData.append('name', name);
+          formData.append('url', url);
 
-    addFile(e){
-      e.preventDefault() 
-      this.fileUpload(this.state.file).then((response)=>{
-        console.log(response.data);
-      })
-    }
-
-    fileUpload = (file) => {
-      let formData = new FormData(); 
-      formData.append('file', file);
-      console.log(formData);
-
-        const postId = this.state.postId;
-        // const file = this.state.url;
-      const body = this.state.name;
-        
-        apiClient.post(`${apiURL}/api/v1/posts/${postId}`, formData, body)
+          apiClient.saveUserImage(`${apiURL}/api/v1/posts/${postId}`, formData)
           .then(res => {
             this.setState({responseMessage: 'Successfully added!'});
             console.log(res);
@@ -87,7 +84,7 @@ class PostPage extends Component {
               this.setState({responseMessageFile: response.data.message});
             }
           });
-    }
+        }
 
     render() {
         return (
@@ -114,14 +111,7 @@ class PostPage extends Component {
                     //validate={VALIDATION_RULES.PASSWORD}
                     onChange={(e) => this.handleChangeBody(e.target.value)}
                     /> 
-                    <br />
-                    <Button 
-                    className="PostButton"
-                    type="submit"
-                    title="Publish" />
-                    <br />
                     <p className="Response">{this.state.responseMessage}</p>
-                    <br />
 
                     <div className="File">
                     <textarea 
@@ -134,9 +124,6 @@ class PostPage extends Component {
                     //validate={VALIDATION_RULES.PASSWORD}
                     onChange={(e) => this.handleChangeName(e.target.value)}
                     /> 
-                    {/* <Button 
-                    onClick={this.chooseFile}
-                    title="Choose File" /> */}
                     <input 
                     name="file"
                     type="file"
@@ -146,11 +133,16 @@ class PostPage extends Component {
                     description="file"
                     onChange={this.chooseFile}
                     /> 
-                    <Button 
+                    {/* <Button 
                     onClick={this.addFile}
-                    title="Add File" />
+                    title="Add File" /> */}
                     </div>
                     <p className="Response">{this.state.responseMessageFile}</p>
+                     <Button 
+                    className="PostButton"
+                    type="submit"
+                    title="Publish" />
+                    <br />
                 </form>
             
             </div>
