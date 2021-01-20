@@ -5,6 +5,8 @@ import apiClient from '../../utils/axios-with-auth';
 import ReactPaginate from 'react-paginate';
 import Post from './Post';
 import './Portfolio.css';
+import Modal from '../UI/Modal/Modal';
+import PostEdit from '../PostEdit/PostEdit';
 
 class Portfolio extends Component {
     state = {
@@ -20,7 +22,7 @@ class Portfolio extends Component {
         return Math.ceil(this.state.posts.length / this.state.perPage);
       }
 
-      handlePageClick = e => {
+    handlePageClick = e => {
         const selectedPage = e.selected;
         const offset = selectedPage * this.state.perPage;
         this.setState({
@@ -109,6 +111,10 @@ class Portfolio extends Component {
         
         return (
             <Auxiliary>
+              <Modal>
+                <p>HELLO</p>
+                <PostEdit />
+              </Modal>
                 <div>
                 <div>
                     <h3 className="PortfolioText">Portfolio Page</h3>

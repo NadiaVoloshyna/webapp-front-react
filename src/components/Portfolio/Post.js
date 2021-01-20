@@ -28,7 +28,7 @@ const toggleExpanded = () => {
                     {props.body}
                 </div>
             </div>
-                <Button className="ButtonFile" onClick={props.editPost} title="Edit Post" /> 
+                <Button className="ButtonFile" onClick={props.getPost} title="Edit Post" /> 
                 <Button className="ButtonFile" onClick={props.removePost} title="Delete Post" /> 
         </div>
         <div>
