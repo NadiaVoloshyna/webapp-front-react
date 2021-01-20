@@ -75,13 +75,13 @@ class PostPage extends Component {
 
           apiClient.saveUserImage(`${apiURL}/api/v1/posts/${postId}`, formData)
           .then(res => {
-            this.setState({responseMessage: 'Successfully added!'});
+            //this.setState({responseMessage: 'Successfully added!'});
             console.log(res);
           })
           .catch(error => {
             const { response } = error;
             if (response) {
-              this.setState({responseMessageFile: response.data.message});
+              //this.setState({responseMessageFile: response.data.message});
             }
           });
         }
